@@ -1,4 +1,4 @@
-from flask import Flask,request,render_template
+from flask import Flask, request, render_template, redirect, url_for
 import numpy as np
 import pandas as pd
 
@@ -13,7 +13,7 @@ app=application
 
 @app.route('/')
 def index():
-    return render_template('index.html') 
+    return redirect(url_for('predict_datapoint'))
 
 @app.route('/predictdata',methods=['GET','POST'])
 def predict_datapoint():
@@ -46,4 +46,4 @@ def predict_datapoint():
     
 
 if __name__=="__main__":
-    app.run(host="0.0.0.0", debug=True)
+    app.run(host="0.0.0.0", debug=False)
